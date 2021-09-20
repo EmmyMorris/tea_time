@@ -1,9 +1,8 @@
 require "rails_helper"
 
 RSpec.describe  do
-  describe "" do
-    it "" do
-
-    end
+  describe "relationships" do
+    it {should belong_to(:customer)}
+    it {should belong_to(:tea)}
   end
 end

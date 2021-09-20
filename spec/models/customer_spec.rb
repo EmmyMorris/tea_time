@@ -1,9 +1,7 @@
 require "rails_helper"
 
 RSpec.describe  do
-  describe "" do
-    it "" do
-
-    end
+  describe "relationships" do
+    it {should have_many(:subscriptions)}
   end
 end
