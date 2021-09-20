@@ -4,7 +4,6 @@ class Subscription < ApplicationRecord
 
   validates_presence_of :title,
                         :price,
-                        :status,
                         :frequency,
                         :customer_id,
                         :tea_id
