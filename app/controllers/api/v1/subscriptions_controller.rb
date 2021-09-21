@@ -1,4 +1,9 @@
 class Api::V1::SubscriptionsController < ApplicationController
+
+  def index
+
+  end
+  
   def create
     customer = Customer.find(params[:customer_id])
     subscription = customer.subscriptions.new(customer_params)
