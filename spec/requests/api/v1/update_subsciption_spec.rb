@@ -10,7 +10,7 @@ RSpec.describe "An endpoint to cancel a customer’s tea subscription" do
     @subscription = Subscription.create(title: "Bob's Peppermint Subscription", price: 12.00, status: "active", frequency: "weekly", customer_id: @customer.id, tea_id: @tea.id)
   end
 
-  describe "Happy Paths" do
+  describe "Happy Path" do
     it "can sucessfully cancel a customer’s tea subscription" do
       patch "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}"
       body = JSON.parse(response.body, symbolize_names: true)

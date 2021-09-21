@@ -6,15 +6,16 @@ RSpec.describe "an endpoint to see all of a customer’s subsciptions (active an
     Tea.destroy_all
     Subscription.destroy_all
     @customer = Customer.create(first_name: "Bob", last_name: "test", email: "test@test.com", address: "12345 Main select Street Denver, CO 80014")
+    @customer_2 = Customer.create(first_name: "Rob", last_name: "test", email: "test_2@test.com", address: "12345 Main select Street Denver, CO 80014")
     @tea_1 = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
     @tea_2 = Tea.create(title: "Black", description: "description", temperature: 90, brew_time: 4)
     @subscription_1 = Subscription.create(title: "Bob's Peppermint Subscription", price: 12.00, status: "active", frequency: "weekly", customer_id: @customer.id, tea_id: @tea_1.id)
     @subscription_2 = Subscription.create(title: "Rob's Peppermint Subscription", price: 12.00, status: "cancelled", frequency: "weekly", customer_id: @customer.id, tea_id: @tea_2.id)
   end
+
   describe "Happy Path" do
     it "can sucessfully see all of a customer’s subsciptions" do
       get "/api/v1/customers/#{@customer.id}/subscriptions"
-
       body = JSON.parse(response.body, symbolize_names: true)
       expect(body[:data]).to be_a(Array)
       expect(body[:data][0][:type]).to eq("subscription")
@@ -47,7 +48,6 @@ RSpec.describe "an endpoint to see all of a customer’s subsciptions (active an
 
   describe "Sad Path" do
     it "Cannot get subscriptions if user doesnt have any" do
-      @customer_2 = Customer.create(first_name: "Rob", last_name: "test", email: "test_2@test.com", address: "12345 Main select Street Denver, CO 80014")
       get "/api/v1/customers/#{@customer_2.id}/subscriptions"
       body = JSON.parse(response.body, symbolize_names: true)
       expect(body[:data]).to be_a(Array)
