@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
   describe "Happy path" do
-    xit "a customer can successfully create a tea subscription" do
+    it "a customer can successfully create a tea subscription" do
       customer = Customer.create(first_name: "Bob", last_name: "test", email: "test@test.com", address: "12345 Main select Street Denver, CO 80014")
       tea = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
 
