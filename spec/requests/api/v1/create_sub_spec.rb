@@ -90,7 +90,7 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
 
       post "/api/v1/customers/#{customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
-        #no price
+        price: 12.00,
         status: "active",
         frequency: "weekly",
         customer_id: customer.id,
