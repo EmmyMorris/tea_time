@@ -27,6 +27,8 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
       expect(body[:data][:attributes][:title]).to be_a(String)
       expect(body[:data][:attributes]).to have_key(:price)
       expect(body[:data][:attributes][:price]).to be_a(Float)
+      expect(body[:data][:attributes]).to have_key(:status)
+      expect(body[:data][:attributes][:status]).to be_a(String)
       expect(body[:data][:attributes]).to have_key(:frequency)
       expect(body[:data][:attributes][:frequency]).to be_a(String)
       expect(body[:data][:attributes]).to have_key(:customer_id)
