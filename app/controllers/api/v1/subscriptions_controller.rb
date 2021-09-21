@@ -2,11 +2,11 @@ class Api::V1::SubscriptionsController < ApplicationController
   def create
     c = Customer.find(params[:customer_id])
     subscription = c.subscriptions.new(customer_params)
-
+    subscription.status = "active"
     if subscription.save
-      render json: SubscriptionSerializer.new(subscriptions), status: 201
+      render json: SubscriptionSerializer.new(subscription), status: 201
     else
-      render json: { error: "More information needed" }, status: 422
+      render json: { error: "More information needed" }, status: 400
     end
   end
 
