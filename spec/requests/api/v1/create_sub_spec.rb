@@ -1,12 +1,15 @@
 require "rails_helper"
 
 RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
+  before :each do
+    Customer.destroy_all
+    Tea.destroy_all
+  end
   describe "Happy path" do
     it "a customer can successfully create a tea subscription" do
       customer = Customer.create(first_name: "Bob", last_name: "test", email: "test@test.com", address: "12345 Main select Street Denver, CO 80014")
       tea = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
-
-      post '/api/v1/customers/1/subscriptions', params: {
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         price: 12.00,
         status: 0,
@@ -36,7 +39,7 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
       customer = Customer.create(first_name: "Bob", last_name: "test", email: "test@test.com", address: "12345 Main select Street Denver, CO 80014")
       tea = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
 
-      post '/api/v1/customers/1/subscriptions', params: {
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         price: 12.00,
         frequency: 1,
@@ -67,7 +70,7 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
       customer = Customer.create(first_name: "Bob", last_name: "test", email: "test@test.com", address: "12345 Main select Street Denver, CO 80014")
       tea = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
 
-      post '/api/v1/customers/1/subscriptions', params: {
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         #no price
         status: 0,
@@ -83,7 +86,7 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
     xit "a tea subscription cannot be created without a customer" do
       tea = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
 
-      post '/api/v1/customers/1/subscriptions', params: {
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         #no price
         status: 0,
@@ -99,7 +102,7 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
     xit "a customer cannot create a tea subscription without a tea" do
       customer = Customer.create(first_name: "Bob", last_name: "test", email: "test@test.com", address: "12345 Main select Street Denver, CO 80014")
 
-      post '/api/v1/customers/1/subscriptions', params: {
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         #no price
         status: 0,
