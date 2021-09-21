@@ -1,9 +1,11 @@
 class Api::V1::SubscriptionsController < ApplicationController
 
   def index
-
+    customer = Customer.find(params[:customer_id])
+    subscriptions = customer.subscriptions
+    render json: SubscriptionSerializer.new(subscriptions), status: 201
   end
-  
+
   def create
     customer = Customer.find(params[:customer_id])
     subscription = customer.subscriptions.new(customer_params)
@@ -17,7 +19,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
   def update
     subscription = Subscription.find(params[:id])
-    subscription.status = "canceled"
+    subscription.status = "cancelled"
     render json: SubscriptionSerializer.new(subscription), status: 201
   end
 

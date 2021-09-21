@@ -18,7 +18,7 @@ RSpec.describe "An endpoint to cancel a customer’s tea subscription" do
       expect(body[:data][:type]).to eq("subscription")
       expect(body[:data][:attributes]).to have_key(:status)
       expect(body[:data][:attributes][:status]).to be_a(String)
-      expect(body[:data][:attributes][:status]).to eq("canceled")
+      expect(body[:data][:attributes][:status]).to eq("cancelled")
       expect(body[:data][:attributes][:status]).not_to eq("active")
     end
   end
