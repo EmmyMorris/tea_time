@@ -1,6 +1,6 @@
 # [Tea Time Take Home Challenge](https://mod4.turing.edu/projects/take_home/take_home_be)
 ## Schema
-![tea_time_schema](https://user-images.githubusercontent.com/77904287/134056426-5995f447-21f0-437b-8957-5f783021296e.png)
+![Tea Time Schema](https://user-images.githubusercontent.com/77904287/134219839-96976b69-dfaa-4697-9fd4-b298ae041ba4.png)
 
 
 ## End Points
@@ -9,25 +9,35 @@
   - POST http://localhost:3000/api/v1/customers/:id/subscriptions
   - Example Request and Required Params:
   ``` 
+  http://localhost:3000/api/v1/customers/1/subscriptions
+  
     params: {
-      title: "Bob's Peppermint Subscription",
-      price: 12.00,
-      frequency: 0,
-      customer_id: 1,
-      tea_id: 1
+      "title": "Bob's Peppermint Subscription",
+      "price": 12.00,
+      "frequency": "weekly",
+      "customer_id": 1,
+      "tea_id": 1
     } 
    ```
-   
-   - Frequency:
-     -  0 = weekly
-     -  1 = biweekly
-     -  2 = monthly
-     -  3 = bimonthly
  
    - Example Response:
     
   ```
-  Comming soon
+  {
+    "data": {
+        "id": "1",
+        "type": "subscription",
+        "attributes": {
+            "id": 1,
+            "title": "Bob's Peppermint Subscription",
+            "price": 10.0,
+            "status": "active",
+            "frequency": "monthly",
+            "customer_id": 1,
+            "tea_id": 1
+        }
+    }
+}
   ```
 <br>
 
@@ -36,28 +46,30 @@ ___
 <br>
 
 ### **An endpoint to cancel a customer’s tea subscription**
-  - DELETE http://localhost:3000/api/v1/customers/:id/subscriptions/:id
-  - Example Request and Required Params:
+  - PATCH http://localhost:3000/api/v1/customers/:id/subscriptions/:id
+  - Example Request:
   ``` 
-    params: {
-      title: "Bob's Peppermint Subscription",
-      price: 12.00,
-      frequency: 0,
-      customer_id: 1,
-      tea_id: 1
-    } 
+http://localhost:3000/api/v1/customers/1/subscriptions/1
    ```
-   
-   - Frequency:
-     -  0 = weekly
-     -  1 = biweekly
-     -  2 = monthly
-     -  3 = bimonthly
  
    - Example Response:
     
   ```
-  Comming soon
+{
+    "data": {
+        "id": "1",
+        "type": "subscription",
+        "attributes": {
+            "id": 1,
+            "title": "Bob's Peppermint Subscription",
+            "price": 12.0,
+            "status": "cancelled",
+            "frequency": "weekly",
+            "customer_id": 1,
+            "tea_id": 1
+        }
+    }
+}
   ```
 <br>
 
@@ -67,9 +79,42 @@ ___
 
 ### **An endpoint to see all of a customer’s subsciptions (active and cancelled)**
   - GET http://localhost:3000/api/v1/customers/:id/subscriptions
+  - Example Request:
+  ``` 
+http://localhost:3000/api/v1/customers/1/subscriptions
+   ```
    - Example Response:
     
   ```
-  Comming soon
+  {
+    "data": [
+        {
+            "id": "1",
+            "type": "subscription",
+            "attributes": {
+                "id": 1,
+                "title": "Bob's Peppermint Subscription",
+                "price": 12.0,
+                "status": "cancelled",
+                "frequency": "weekly",
+                "customer_id": 1,
+                "tea_id": 1
+            }
+        },
+        {
+            "id": "2",
+            "type": "subscription",
+            "attributes": {
+                "id": 2,
+                "title": "Robs Black Tea Subscription",
+                "price": 10.0,
+                "status": "active",
+                "frequency": "monthly",
+                "customer_id": 1,
+                "tea_id": 1
+            }
+        }
+    ]
+}
   ```
   
