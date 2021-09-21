@@ -7,7 +7,4 @@ class Subscription < ApplicationRecord
                         :frequency,
                         :customer_id,
                         :tea_id
-
-  enum status: [:active, :cancelled]
-  enum frequency: [:weekly, :biweekly, :monthly, :bimonthly]
 end
