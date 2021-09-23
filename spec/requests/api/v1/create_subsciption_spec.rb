@@ -14,8 +14,8 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
       post "/api/v1/customers/#{@customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         price: 12.00,
-        status: "active",
-        frequency: "weekly",
+        status: 0,
+        frequency: 1,
         customer_id: @customer.id,
         tea_id: @tea.id
       }
@@ -73,8 +73,8 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
       post "/api/v1/customers/#{@customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         #no price
-        status: "active",
-        frequency: "weekly",
+        status: 0,
+        frequency: 2,
         customer_id: @customer.id,
         tea_id: @tea.id
       }
@@ -87,8 +87,8 @@ RSpec.describe "An endpoint to subscribe a customer to a tea subscription" do
       post "/api/v1/customers/#{@customer.id}/subscriptions", params: {
         title: "Bob's Peppermint Subscription",
         price: 12.00,
-        status: "active",
-        frequency: "weekly",
+        status: 0,
+        frequency: 1,
         customer_id: @customer.id,
         tea_id: ""
       }
