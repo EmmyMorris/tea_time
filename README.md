@@ -1,4 +1,7 @@
 # [Tea Time Take Home Challenge](https://mod4.turing.edu/projects/take_home/take_home_be)
+
+Tea Time is a tea subscription service that has teas, customers, and subscriptions. This application has endpoints to create a tea subscription, cancel a tea subscription, and see all of a customers tea subscriptions!
+
 ## Database Design
 ![Tea Time Schema](https://user-images.githubusercontent.com/77904287/134219839-96976b69-dfaa-4697-9fd4-b298ae041ba4.png)
 
