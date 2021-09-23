@@ -9,8 +9,8 @@ RSpec.describe "an endpoint to see all of a customer’s subsciptions (active an
     @customer_2 = Customer.create(first_name: "Rob", last_name: "test", email: "test_2@test.com", address: "12345 Main select Street Denver, CO 80014")
     @tea_1 = Tea.create(title: "Peppermint", description: "description", temperature: 80, brew_time: 2)
     @tea_2 = Tea.create(title: "Black", description: "description", temperature: 90, brew_time: 4)
-    @subscription_1 = Subscription.create(title: "Bob's Peppermint Subscription", price: 12.00, status: "active", frequency: "weekly", customer_id: @customer.id, tea_id: @tea_1.id)
-    @subscription_2 = Subscription.create(title: "Rob's Peppermint Subscription", price: 12.00, status: "cancelled", frequency: "weekly", customer_id: @customer.id, tea_id: @tea_2.id)
+    @subscription_1 = Subscription.create(title: "Bob's Peppermint Subscription", price: 12.00, status: 0, frequency: 1, customer_id: @customer.id, tea_id: @tea_1.id)
+    @subscription_2 = Subscription.create(title: "Rob's Peppermint Subscription", price: 12.00, status: 1, frequency: 3, customer_id: @customer.id, tea_id: @tea_2.id)
   end
 
   describe "Happy Path" do
