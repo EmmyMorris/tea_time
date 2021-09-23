@@ -3,7 +3,7 @@
 Tea Time is a tea subscription service that has teas, customers, and subscriptions. This application has endpoints to create a tea subscription, cancel a tea subscription, and see all of a customers tea subscriptions!
 
 ## Database Design
-![Tea Time Schema](https://user-images.githubusercontent.com/77904287/134219839-96976b69-dfaa-4697-9fd4-b298ae041ba4.png)
+![Tea Time Schema](https://user-images.githubusercontent.com/77904287/134587009-7acdb0b5-22e0-4866-ae66-cbeabd4553b2.png)
 
 ## Local Setup
 
