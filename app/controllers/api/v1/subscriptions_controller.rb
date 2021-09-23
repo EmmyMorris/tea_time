@@ -8,8 +8,15 @@ class Api::V1::SubscriptionsController < ApplicationController
 
   def create
     customer = Customer.find(params[:customer_id])
-    subscription = customer.subscriptions.new(customer_params)
-    subscription.status = "active"
+    subscription = customer.subscriptions.new(
+                                              title: params[:title],
+                                              price: params[:price],
+                                              status: params[:status].to_i,
+                                              frequency: params[:frequency].to_i,
+                                              customer_id: params[:customer_id],
+                                              tea_id: params[:tea_id]
+                                            )
+
     if subscription.save
       render json: SubscriptionSerializer.new(subscription), status: 201
     else
@@ -22,11 +29,5 @@ class Api::V1::SubscriptionsController < ApplicationController
     subscription.status = "cancelled"
     subscription.save
     render json: SubscriptionSerializer.new(subscription), status: 201
-  end
-
-  private
-
-  def customer_params
-    params.permit(:title, :price, :status, :frequency, :customer_id, :tea_id)
   end
 end
