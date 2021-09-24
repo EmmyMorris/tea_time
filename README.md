@@ -36,12 +36,23 @@ Tea Time is a tea subscription service that has teas, customers, and subscriptio
     params: {
       "title": "Bob's Peppermint Subscription",
       "price": 12.00,
-      "frequency": "weekly",
+      "frequency": 0,
       "customer_id": 1,
       "tea_id": 1
     } 
    ```
- 
+   
+   enum status: [:active, :cancelled] <br>
+   - 0 = "active"
+   - 1 = "cancelled"
+<br>
+
+   enum frequency: [:weekly, :biweekly, :monthly, :bimonthly] <br>
+   - 0 = "weekly"
+   - 1 = "biweekly"
+   - 2 = "monthly"
+   - 3 = "bimonthly"
+   <br>
    - Example Response:
     
   ```
